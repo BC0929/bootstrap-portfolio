@@ -62,8 +62,27 @@
             </div>
 
             <div class="col-lg-5 text-center">
-              <div class="hero-image-wrap">
+              <div class="hero-image-wrap mx-auto">
                 <img src="img/profile.jpg" alt="Brandon Clair" class="hero-image img-fluid" />
+              </div>
+
+              <div class="terminal-panel text-start mx-auto">
+                <div class="terminal-bar">
+                  <div class="terminal-dots" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="terminal-title">Brandon Clair Terminal</div>
+                  <div style="width: 2rem;"></div>
+                </div>
+                <div class="terminal-body">
+                  <div id="terminal-output" class="terminal-output" aria-live="polite"></div>
+                  <form id="terminal-form" class="terminal-input-row">
+                    <span class="terminal-prompt">&gt;</span>
+                    <input id="terminal-input" class="terminal-input" type="text" autocomplete="off" spellcheck="false" placeholder="help, experience, skills, contact" />
+                    <button class="terminal-button" type="submit">Run</button>
+                  </form>
+                  <div class="terminal-hints">Try: help, experience, skills, contact, clear</div>
+                </div>
               </div>
             </div>
           </div>
@@ -302,5 +321,59 @@
   </footer>
 
   <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (() => {
+      const output = document.getElementById('terminal-output');
+      const form = document.getElementById('terminal-form');
+      const input = document.getElementById('terminal-input');
+
+      if (!output || !form || !input) return;
+
+      const lines = [
+        'BrandonClair@portfolio:~$ whoami',
+        'Brandon Clair',
+        '',
+        'BrandonClair@portfolio:~$ help',
+        'Available commands: help, about, experience, skills, contact, clear',
+      ];
+
+      const responses = {
+        help: 'help  about  experience  skills  contact  clear',
+        about: 'Information Technology student at UNT with MSP support experience in real-world user and system troubleshooting.',
+        experience: 'MSP support: Microsoft 365, Outlook, OneDrive, printers, scanners, remote desktop, accounts, and ticket triage.',
+        skills: 'Networking basics, Windows troubleshooting, Microsoft 365 admin workflows, endpoint support, and technical communication.',
+        contact: 'Email: brandonclair@my.unt.edu | LinkedIn: linkedin.com/in/brandon-clair-1533a3164 | GitHub: github.com/BC0929',
+      };
+
+      const renderLine = (text) => {
+        const p = document.createElement('p');
+        p.className = 'terminal-line';
+        p.textContent = text;
+        output.appendChild(p);
+        output.scrollTop = output.scrollHeight;
+      };
+
+      lines.forEach(renderLine);
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const command = input.value.trim();
+        if (!command) return;
+
+        renderLine(`BrandonClair@portfolio:~$ ${command}`);
+
+        const key = command.toLowerCase();
+        if (key === 'clear') {
+          output.innerHTML = '';
+          input.value = '';
+          return;
+        }
+
+        renderLine(responses[key] || 'Command not found. Try help.');
+        input.value = '';
+        input.focus();
+      });
+    })();
+  </script>
 </body>
 </html>
