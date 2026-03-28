@@ -426,6 +426,75 @@ a:hover { color: #fff; }
   font-size: 0.95rem;
 }
 
+.tech-showcase {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.tech-visual,
+.tech-visual-tall {
+  border-radius: 26px;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.tech-visual::after,
+.tech-visual-tall::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 8, 18, 0.18), rgba(4, 8, 18, 0.82));
+}
+
+.tech-visual > span,
+.tech-visual-tall > span {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  color: #fff;
+}
+
+.tech-visual strong,
+.tech-visual-tall strong {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.tech-visual small,
+.tech-visual-tall small {
+  color: rgba(247, 251, 255, 0.76);
+}
+
+.tech-visual {
+  background-image:
+    linear-gradient(135deg, rgba(125, 211, 252, 0.1), rgba(167, 139, 250, 0.08)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 760'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23071a2d'/%3E%3Cstop offset='1' stop-color='%23051014'/%3E%3C/linearGradient%3E%3ClinearGradient id='l' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237dd3fc' stop-opacity='.8'/%3E%3Cstop offset='1' stop-color='%23a78bfa' stop-opacity='.7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='760' fill='url(%23g)'/%3E%3Cg opacity='.35'%3E%3Cpath d='M0 120h1200M0 240h1200M0 360h1200M0 480h1200M0 600h1200' stroke='%23dbeafe' stroke-opacity='.25'/%3E%3Cpath d='M140 0v760M300 0v760M460 0v760M620 0v760M780 0v760M940 0v760M1100 0v760' stroke='%23dbeafe' stroke-opacity='.18'/%3E%3C/g%3E%3Cg fill='none' stroke='url(%23l)' stroke-width='3'%3E%3Cpath d='M140 500c120-160 240-160 360 0s240 160 360 0 240-160 360 0'/%3E%3Cpath d='M120 150c140 40 220 120 280 240s120 180 220 180 180-60 260-180 160-200 300-240' opacity='.6'/%3E%3C/g%3E%3Cg fill='%237dd3fc' fill-opacity='.9'%3E%3Ccircle cx='220' cy='180' r='10'/%3E%3Ccircle cx='440' cy='380' r='8'/%3E%3Ccircle cx='680' cy='280' r='11'/%3E%3Ccircle cx='930' cy='500' r='9'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.tech-visual-tall {
+  min-height: 100%;
+  background-image:
+    linear-gradient(135deg, rgba(245, 198, 106, 0.08), rgba(125, 211, 252, 0.08)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 1100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23070e18'/%3E%3Cstop offset='1' stop-color='%23061422'/%3E%3C/linearGradient%3E%3ClinearGradient id='l' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f5c66a' stop-opacity='.75'/%3E%3Cstop offset='1' stop-color='%237dd3fc' stop-opacity='.75'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='900' height='1100' fill='url(%23g)'/%3E%3Cg opacity='.3'%3E%3Cpath d='M100 80h700M100 220h700M100 360h700M100 500h700M100 640h700M100 780h700M100 920h700' stroke='%23e2e8f0' stroke-opacity='.18'/%3E%3Cpath d='M140 100v900M300 100v900M460 100v900M620 100v900M780 100v900' stroke='%23e2e8f0' stroke-opacity='.16'/%3E%3C/g%3E%3Cg fill='none' stroke='url(%23l)' stroke-width='4'%3E%3Cpath d='M160 200h580v250H160z' opacity='.85'/%3E%3Cpath d='M220 520h460v250H220z' opacity='.65'/%3E%3Cpath d='M300 850c80-120 160-120 240 0s160 120 240 0'/%3E%3C/g%3E%3Cg fill='%23dbeafe' fill-opacity='.9'%3E%3Ccircle cx='260' cy='300' r='10'/%3E%3Ccircle cx='640' cy='300' r='10'/%3E%3Ccircle cx='260' cy='620' r='10'/%3E%3Ccircle cx='640' cy='620' r='10'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.tech-visual:hover,
+.tech-visual-tall:hover {
+  transform: translateY(-4px);
+}
+
 .footer {
   border-top: 1px solid var(--border);
   background: rgba(4, 7, 16, 0.8);
@@ -466,4 +535,10 @@ a:hover { color: #fff; }
   .topbar .nav-pills { gap: 0.25rem; }
   .topbar .nav-link { padding: 0.45rem 0.72rem; }
   .hero h1 { font-size: clamp(2.45rem, 14vw, 3.8rem); }
+}
+
+@media (max-width: 991.98px) {
+  .tech-showcase {
+    grid-template-columns: 1fr;
+  }
 }
