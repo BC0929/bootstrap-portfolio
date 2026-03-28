@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal portfolio website for Brandon Clair" />
+  <meta name="author" content="Brandon Clair" />
+  <title>Brandon Clair | Portfolio</title>
+
+  <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet" />
+  <link href="blog.css" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg-main: #0b1020;
+    --bg-soft: #121a2f;
+    --bg-card: rgba(22, 30, 52, 0.88);
+    --border-soft: rgba(133, 147, 191, 0.18);
+    --text-main: #edf2ff;
+    --text-soft: #b7c2e0;
+    --accent: #6d7cff;
+    --accent-2: #9b6dff;
+    --accent-3: #4cc9f0;
+    --shadow-dark: 0 18px 45px rgba(0, 0, 0, 0.35);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at top right, rgba(155, 109, 255, 0.15), transparent 30%),
+      radial-gradient(circle at top left, rgba(76, 201, 240, 0.12), transparent 28%),
+      linear-gradient(180deg, #09101d 0%, #0d1324 100%);
+    color: var(--text-main);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  a {
+    color: var(--accent-3);
+    transition: 0.2s ease;
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+
+  .container {
+    max-width: 1150px;
+  }
+
+  .blog-header-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+  }
+
+  .text-body-emphasis,
+  .link-body-emphasis,
+  h1, h2, h3, h4, h5, h6,
+  .blog-header-logo {
+    color: var(--text-main) !important;
+  }
+
+  .link-secondary,
+  .text-body-secondary,
+  .blog-post-meta,
+  p,
+  li {
+    color: var(--text-soft) !important;
+  }
+
+  .border-bottom {
+    border-color: var(--border-soft) !important;
+  }
+
+  .nav-scroller {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-scroller .nav-link {
+    color: var(--text-soft) !important;
+    border-radius: 999px;
+    padding: 0.55rem 1rem;
+    margin: 0.2rem 0.15rem;
+  }
+
+  .nav-scroller .nav-link.active,
+  .nav-scroller .nav-link:hover {
+    background: linear-gradient(135deg, rgba(109, 124, 255, 0.22), rgba(155, 109, 255, 0.22));
+    color: #ffffff !important;
+  }
+
+  .btn-outline-secondary {
+    border-color: rgba(155, 109, 255, 0.45);
+    color: #eef1ff;
+    border-radius: 999px;
+  }
+
+  .btn-outline-secondary:hover {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-color: transparent;
+    color: white;
+  }
+
+  .p-4.p-md-5.mb-4.rounded.text-body-emphasis.bg-body-secondary {
+    background:
+      linear-gradient(135deg, rgba(109, 124, 255, 0.16), rgba(155, 109, 255, 0.14)),
+      rgba(17, 24, 43, 0.88) !important;
+    border: 1px solid var(--border-soft);
+    border-radius: 28px !important;
+    box-shadow: var(--shadow-dark);
+    backdrop-filter: blur(14px);
+  }
+
+  .hero-img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 22px;
+    border: 3px solid rgba(155, 109, 255, 0.4);
+    box-shadow:
+      0 12px 35px rgba(0, 0, 0, 0.35),
+      0 0 0 8px rgba(109, 124, 255, 0.08);
+  }
+
+  .profile-placeholder {
+    width: 230px;
+    height: 230px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-soft);
+    border: 1px solid var(--border-soft);
+  }
+
+  .row.g-0.border.rounded.overflow-hidden.shadow-sm.section-card,
+  .p-4.mb-3.bg-body-tertiary.rounded,
+  .p-4 {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 22px !important;
+    box-shadow: var(--shadow-dark);
+    backdrop-filter: blur(10px);
+  }
+
+  .section-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .blog-post {
+    background: rgba(18, 26, 47, 0.72);
+    border: 1px solid var(--border-soft);
+    border-radius: 24px;
+    padding: 1.6rem 1.6rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-dark);
+  }
+
+  .blog-post hr {
+    border-color: rgba(183, 194, 224, 0.15);
+  }
+
+  .fst-italic.border-bottom,
+  h3.pb-4.mb-4.fst-italic.border-bottom {
+    border-color: var(--border-soft) !important;
+    color: #ffffff !important;
+  }
+
+  .position-sticky .p-4 {
+    margin-bottom: 1.25rem;
+  }
+
+  ol.list-unstyled li,
+  ul li {
+    margin-bottom: 0.45rem;
+  }
+
+  footer {
+    background: rgba(14, 19, 34, 0.9) !important;
+    border-top: 1px solid var(--border-soft);
+    margin-top: 3rem;
+  }
+
+  .bg-body-tertiary,
+  .bg-body-secondary {
+    --bs-bg-opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .hero-img,
+    .profile-placeholder {
+      width: 180px;
+      height: 180px;
+      margin-top: 1rem;
+    }
+
+    .blog-post {
+      padding: 1.2rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="border-bottom lh-1 py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="link-secondary text-decoration-none" href="#about">Portfolio</a>
+        </div>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">
+            Brandon Clair
+          </a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <a class="btn btn-sm btn-outline-secondary" href="#goals">Career Goals</a>        </div>
+      </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-3 border-bottom">
+      <nav class="nav nav-underline justify-content-between">
+        <a class="nav-item nav-link link-body-emphasis active" href="#about">About</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#education">Education</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#experience">Experience</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#skills">Skills</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#goals">Goals</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="display-4 fst-italic">Brandon Clair</h1>
+          <p class="lead my-3">
+           Information Technology student at the University of North Texas with hands-on MSP experience supporting users, troubleshooting systems, and building a stronger foundation in networking, enterprise IT, and cybersecurity.
+          </p>
+          <p class="lead mb-0">
+            <a href="#about" class="text-body-emphasis fw-bold">Learn more about me</a>
+          </p>
+        </div>
+
+        <div class="col-lg-4 text-center mt-4 mt-lg-0">
+          <!-- Replace this with your real image if you want -->
+          <!-- <img src="img/profile.jpg" alt="Brandon Clair" class="hero-img img-fluid"> -->
+          <img src="img/profile.jpg" alt="Brandon Clair" class="hero-img img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-6 mb-3">
+        <div class="row g-0 border rounded overflow-hidden shadow-sm section-card">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary-emphasis">Experience</strong>
+            <h3 class="mb-0">Managed Service Provider Work</h3>
+            <div class="mb-1 text-body-secondary">Current Role</div>
+            <p class="card-text mb-auto">
+              I currently work in IT support at an MSP, where I assist users with technical issues involving software, hardware, Microsoft 365, printers, account access, and general troubleshooting.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <div class="row g-0 border rounded overflow-hidden shadow-sm section-card">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success-emphasis">Education</strong>
+            <h3 class="mb-0">University of North Texas</h3>
+            <div class="mb-1 text-body-secondary">Information Technology Student</div>
+            <p class="mb-auto">
+              I am currently studying IT at UNT and continuing to build a stronger background in enterprise systems, networking, cybersecurity, and technical problem solving.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3 class="pb-4 mb-4 fst-italic border-bottom" id="about">About Me</h3>
+
+        <article class="blog-post">
+          <h2 class="display-5 link-body-emphasis mb-1">Who I Am</h2>
+          <p class="blog-post-meta">2026 by Brandon Clair</p>
+
+          <p>
+            My name is Brandon Clair, and I am currently studying Information Technology at the University of North Texas. I am interested in enterprise IT, technical support, networking, and cybersecurity.
+          </p>
+
+          <hr />
+
+          <p>
+            Along with school, I currently work at a Managed Service Provider where I help support users and troubleshoot real-world IT issues. This has helped me build hands-on experience while also learning the technical concepts behind the systems I work with.
+          </p>
+
+          <p>
+            I enjoy learning through both coursework and direct experience, especially when it comes to solving technical problems and understanding how systems work behind the scenes.
+          </p>
+        </article>
+
+        <article class="blog-post" id="education">
+          <h2 class="display-5 link-body-emphasis mb-1">What I’ve Studied</h2>
+          <p class="blog-post-meta">Coursework and Technical Learning</p>
+
+          <p>
+            Through school and practical work, I have studied topics related to information technology, troubleshooting, operating systems, networking, cybersecurity, and enterprise tools.
+          </p>
+
+          <h3>Areas of Study</h3>
+          <ul>
+            <li>Networking fundamentals</li>
+            <li>Cybersecurity concepts</li>
+            <li>System troubleshooting</li>
+            <li>Windows and enterprise tools</li>
+            <li>Technical support and user assistance</li>
+            <li>Basic programming and web technologies</li>
+          </ul>
+
+          <p>
+            My coursework and work experience continue to strengthen my understanding of how technology is used in professional environments.
+          </p>
+        </article>
+
+        <article class="blog-post" id="experience">
+          <h2 class="display-5 link-body-emphasis mb-1">Work Experience</h2>
+          <p class="blog-post-meta">Hands-on IT Support Experience</p>
+
+          <p>
+            Working at an MSP has given me exposure to the kind of issues users and businesses face every day. It has helped me improve both my technical ability and communication skills.
+          </p>
+
+          <h3>Examples of Work I’ve Done</h3>
+          <ul>
+            <li>Troubleshooting Microsoft 365 and Outlook issues</li>
+            <li>Helping users with OneDrive, account access, and login problems</li>
+            <li>Supporting printer and scan-to-email issues</li>
+            <li>Assisting with remote support and desktop troubleshooting</li>
+            <li>Working through general Windows and application issues</li>
+          </ul>
+        </article>
+
+        <article class="blog-post" id="skills">
+          <h2 class="display-5 link-body-emphasis mb-1">Skills</h2>
+          <p class="blog-post-meta">Current Strengths and Tools</p>
+
+          <ul>
+            <li>Microsoft 365 support</li>
+            <li>Outlook and email troubleshooting</li>
+            <li>Printer and scanner support</li>
+            <li>Windows troubleshooting</li>
+            <li>Remote desktop and remote support tools</li>
+            <li>User account and login support</li>
+            <li>Basic networking support</li>
+            <li>Technical communication and customer support</li>
+          </ul>
+        </article>
+
+        <article class="blog-post" id="goals">
+          <h2 class="display-5 link-body-emphasis mb-1">Career Goals</h2>
+          <p class="blog-post-meta">Where I Want to Go Next</p>
+
+          <p>
+            My goal is to continue growing in the IT field while gaining more experience in enterprise support, systems administration, networking, and cybersecurity-related work.
+          </p>
+
+          <p>
+            I want to keep building a strong technical foundation while also becoming more confident in handling larger systems and more advanced infrastructure.
+          </p>
+        </article>
+      </div>
+
+      <div class="col-md-4">
+        <div class="position-sticky" style="top: 2rem">
+          <div class="p-4 mb-3 bg-body-tertiary rounded">
+            <h4 class="fst-italic">Quick Summary</h4>
+            <p class="mb-0">
+              UNT Information Technology student with current MSP experience and growing interests in enterprise systems, troubleshooting, networking, and cybersecurity.
+            </p>
+          </div>
+
+          <div class="p-4">
+            <h4 class="fst-italic">Highlights</h4>
+            <ol class="list-unstyled mb-0">
+              <li><a href="#experience">MSP Support Experience</a></li>
+              <li><a href="#education">UNT IT Coursework</a></li>
+              <li><a href="#skills">Technical Skills</a></li>
+              <li><a href="#goals">Career Goals</a></li>
+            </ol>
+          </div>
+
+          <div class="p-4">
+            <h4 class="fst-italic">Core Interests</h4>
+            <ol class="list-unstyled mb-0">
+              <li>Technical Support</li>
+              <li>Networking</li>
+              <li>Cybersecurity</li>
+              <li>Enterprise IT</li>
+              <li>Systems Troubleshooting</li>
+              <li>Cloud Tools</li>
+            </ol>
+          </div>
+
+          <div class="p-4">
+            <h4 class="fst-italic">Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">UNT</a></li>
+              <li><a href="#">Email</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-5 text-center text-body-secondary bg-body-tertiary mt-5">
+    <p>Personal portfolio website created by Brandon Clair using Bootstrap.</p>
+    <p class="mb-0"><a href="#">Back to top</a></p>
+  </footer>
+
+  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
